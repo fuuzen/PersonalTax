@@ -36,10 +36,24 @@ jobs:
     - name: Extract project version
       id: extract-version
       run: |
-        VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | sed 's/\r$//')
+        
+        VERSION=$(echo $VERSION | tr -d '\n')
+        
+        if [[ "$RUNNER_OS" == "Windows" ]]; then
+          echo "VERSION=$VERSION" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        else
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+        fi
 
-    - name: Test and then build
+    - name: Validate version format
+      run: |
+        if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-SNAPSHOT)?$ ]]; then
+          echo "::error::Invalid version format: $VERSION"
+          exit 1
+        fi
+
+    - name: Test and then build jar
       run: mvn clean package
 
     - name: Build Executable
