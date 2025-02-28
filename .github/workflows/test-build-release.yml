@@ -33,8 +33,9 @@ jobs:
         distribution: 'temurin'
         java-version: '21'
 
-    - name: Extract project version
-      id: extract-version
+    - name: Extract & validate project version
+      shell: bash
+      id: extract-and-validate-version
       run: |
         VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | sed 's/\r$//')
         
@@ -46,8 +47,6 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
         fi
 
-    - name: Validate version format
-      run: |
         if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-SNAPSHOT)?$ ]]; then
           echo "::error::Invalid version format: $VERSION"
           exit 1
@@ -57,6 +56,7 @@ jobs:
       run: mvn clean package
 
     - name: Build Executable
+      shell: bash
       run: |
         case ${{ matrix.os }} in
           ubuntu-latest)

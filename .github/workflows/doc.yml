@@ -3,6 +3,7 @@ name: Build & Deploy Javadoc
 on:
   push:
     branches: [ main, master, ci-test ]
+    paths: ["src/main/java/fyi/taf/PersonalTax/**"]
 
 jobs:
   build-and-deploy:
