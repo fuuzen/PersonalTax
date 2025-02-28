@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"fyi.taf.PersonalTax","l":"Calculator"},{"p":"fyi.taf.PersonalTax","l":"programGUI"}];updateSearchResults();
