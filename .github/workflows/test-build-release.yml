@@ -3,7 +3,7 @@ name: Test & Build (& Release)
 on:
   push:
     branches: [ main, master, ci-test ]
-    paths: ["src/main/java/fyi/taf/PersonalTax/**", "src/test/java/fyi/taf/PersonalTax/**", "pom.xml"]
+    paths-ignore: ["**/*.md"]
 
 jobs:
   test-and-build:
