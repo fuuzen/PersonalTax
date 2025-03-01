@@ -47,20 +47,34 @@ public class programGUI {
         panel.setLayout(null);
 
         try {
-            InputStream inputStream16 = programGUI.class.getClassLoader().getResourceAsStream("images/icon16.png");
-            InputStream inputStream32 = programGUI.class.getClassLoader().getResourceAsStream("images/icon32.png");
-            InputStream inputStream64 = programGUI.class.getClassLoader().getResourceAsStream("images/icon64.png");
+            String os = System.getProperty("os.name").toLowerCase();
+            Image icon;
+            if (os.contains("win")) {
+                ImageIcon ico = new ImageIcon("images/icons/icon.ico");
+                icon = ico.getImage();
+            } else if (os.contains("mac")) {
+                ImageIcon icns = new ImageIcon("images/icons/icon.icns");
+                icon = icns.getImage();
+            } else {
+                InputStream inputStream16 = programGUI.class.getClassLoader().getResourceAsStream("images/icons/icon16.png");
+                InputStream inputStream32 = programGUI.class.getClassLoader().getResourceAsStream("images/icons/icon32.png");
+                InputStream inputStream64 = programGUI.class.getClassLoader().getResourceAsStream("images/icons/icon64.png");
+                InputStream inputStream128 = programGUI.class.getClassLoader().getResourceAsStream("images/icons/icon128.png");
+                InputStream inputStream256 = programGUI.class.getClassLoader().getResourceAsStream("images/icons/icon256.png");
 
-            if (inputStream16 == null || inputStream32 == null || inputStream64 == null) {
-                throw new IOException("Icon not found!");
+                if (inputStream16 == null || inputStream32 == null || inputStream64 == null || inputStream128 == null || inputStream256 == null) {
+                    throw new IOException("Icon not found!");
+                }
+
+                BufferedImage icon16 = ImageIO.read(inputStream16);
+                BufferedImage icon32 = ImageIO.read(inputStream32);
+                BufferedImage icon64 = ImageIO.read(inputStream64);
+                BufferedImage icon128 = ImageIO.read(inputStream128);
+                BufferedImage icon256 = ImageIO.read(inputStream256);
+    
+                icon = new BaseMultiResolutionImage(icon16, icon32, icon64, icon128, icon256);
             }
-
-            BufferedImage icon16 = ImageIO.read(inputStream16);
-            BufferedImage icon32 = ImageIO.read(inputStream32);
-            BufferedImage icon64 = ImageIO.read(inputStream64);
-
-            Image multiResolutionIcon = new BaseMultiResolutionImage(icon16, icon32, icon64);
-            frame.setIconImage(multiResolutionIcon);
+            frame.setIconImage(icon);
 
             InputStream inputStream = programGUI.class.getClassLoader().getResourceAsStream("images/taffy.png");
             if (inputStream == null) {

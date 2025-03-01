@@ -61,7 +61,9 @@ jobs:
               --name PersonalTax \
               --main-jar PersonalTax-${{ env.VERSION }}.jar \
               --type ${{ matrix.package-type }} \
-              --dest release
+              --dest release \
+              --linux-shortcut \
+              --license-file LICENSE
             ;;
           windows-latest)
             jpackage --input target/ \
@@ -69,14 +71,22 @@ jobs:
               --main-jar PersonalTax-${{ env.VERSION }}.jar \
               --type ${{ matrix.package-type }} \
               --win-console \
-              --dest release
+              --dest release \
+              --icon ./src/main/resources/icons/icon.ico \
+              --win-shortcut \
+              --win-dir-chooser \
+              --win-menu \
+              --license-file LICENSE
             ;;
           macos-latest)
             jpackage --input target/ \
               --name PersonalTax \
               --main-jar PersonalTax-${{ env.VERSION }}.jar \
               --type ${{ matrix.package-type }} \
-              --dest release
+              --dest release \
+              --icon ./src/main/resources/icons/icon.icns \
+              --mac-package-name PersonalTax \
+              --license-file LICENSE
             ;;
         esac
 
