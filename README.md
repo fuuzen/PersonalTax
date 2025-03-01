@@ -20,6 +20,12 @@ java -jar ./PersonalTax-*.*.*.jar
 
 API 文档：https://taf.fyi/PersonalTax
 
+## 设计
+
+使用 jetUML 绘制 UML 设计图如下
+
+![UML](UML.png)
+
 ## 实验评价标准
 
 **课程**: DCS292 编译器构造实验  
