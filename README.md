@@ -8,7 +8,13 @@
 
 ![GUI-demo](GUI-demo.png)
 
-在 Release 中找到自己平台的可执行文件，下载使用。或者下载 jar 文件用 java 运行。
+在 Release 中找到自己平台的可执行安装程序文件，下载进行安装。由于下载下来的文件会被标记为“来源于网络”，因此 macOS 的 Gatekeeper 或 Windows 的 SmartScreen 会强制拦截，花钱买代码签名证书才能被信任。所以安装时请以 “仍要运行” 的方式运行安装程序。
+
+或者你的电脑有 java 环境可以下载轻量 jar 文件运行：
+
+```shell
+java -jar ./PersonalTax-*.*.*.jar
+```
 
 ### 使用 API
 
