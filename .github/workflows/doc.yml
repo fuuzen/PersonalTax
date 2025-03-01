@@ -3,7 +3,7 @@ name: Build & Deploy Javadoc
 on:
   push:
     branches: [ main, master, ci-test ]
-    paths: ["src/main/java/fyi/taf/PersonalTax/**"]
+    paths: ["src/main/java/fyi/taf/PersonalTax/**", ".github/workflows/doc.yml"]
 
 jobs:
   build-and-deploy:
