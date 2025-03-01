@@ -1,8 +1,17 @@
 package fyi.taf.PersonalTax;
 
+import java.awt.Image;
+import java.awt.image.BaseMultiResolutionImage;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
@@ -30,29 +39,61 @@ public class programGUI {
         Calculator calculator = new Calculator();
 
         JFrame frame = new JFrame("个人所得税计算器");
-        frame.setSize(400, 300);
+        frame.setSize(650, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();    
         frame.add(panel);
         panel.setLayout(null);
 
+        try {
+            InputStream inputStream16 = programGUI.class.getClassLoader().getResourceAsStream("images/icon16.png");
+            InputStream inputStream32 = programGUI.class.getClassLoader().getResourceAsStream("images/icon32.png");
+            InputStream inputStream64 = programGUI.class.getClassLoader().getResourceAsStream("images/icon64.png");
+
+            if (inputStream16 == null || inputStream32 == null || inputStream64 == null) {
+                throw new IOException("Icon not found!");
+            }
+
+            BufferedImage icon16 = ImageIO.read(inputStream16);
+            BufferedImage icon32 = ImageIO.read(inputStream32);
+            BufferedImage icon64 = ImageIO.read(inputStream64);
+
+            Image multiResolutionIcon = new BaseMultiResolutionImage(icon16, icon32, icon64);
+            frame.setIconImage(multiResolutionIcon);
+
+            InputStream inputStream = programGUI.class.getClassLoader().getResourceAsStream("images/taffy.png");
+            if (inputStream == null) {
+                throw new IOException("Image not found!");
+            }
+            JLabel taffy = new JLabel(
+                new ImageIcon(
+                    ImageIO.read(inputStream).getScaledInstance(250, 250, Image.SCALE_SMOOTH)
+                )
+            );
+            taffy.setBounds(25, 5, 250, 250);
+            panel.add(taffy);
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(frame, "Failed to load image!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
         JLabel inputLabel = new JLabel("您的收入: ");
-        inputLabel.setBounds(50,20,100,25);
+        inputLabel.setBounds(300, 20, 100, 25);
         inputLabel.setHorizontalAlignment(JLabel.RIGHT);
         panel.add(inputLabel);
 
         SpinnerNumberModel input = new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1);
         JSpinner spinner = new JSpinner(input);
-        spinner.setBounds(150, 20, 150, 25);
+        spinner.setBounds(400, 20, 150, 25);
         panel.add(spinner);
 
         JButton calButton = new JButton("计算");
-        calButton.setBounds(150, 50, 100, 25);
+        calButton.setBounds(400, 50, 100, 25);
         panel.add(calButton);
 
         JLabel texLabelText = new JLabel("您的个人所得税为: ");
-        texLabelText.setBounds(100, 80, 200, 25);
+        texLabelText.setBounds(350, 80, 200, 25);
         texLabelText.setHorizontalAlignment(JLabel.CENTER);
         panel.add(texLabelText);
 
@@ -81,7 +122,7 @@ public class programGUI {
         }
         model.addRow(new Object[]{"总共", null, null, 0});
         JTable table = new JTable(model);
-        table.setBounds(50, 120, 300, 120);
+        table.setBounds(300, 120, 300, 120);
         panel.add(table);
 
         calButton.addActionListener(e -> {
