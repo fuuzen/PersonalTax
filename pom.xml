@@ -5,12 +5,13 @@
 
   <groupId>fyi.taf</groupId>
   <artifactId>PersonalTax</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
   <name>PersonalTax</name>
+  <url>https://taf.fyi/PersonalTax</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.release>17</maven.compiler.release>
+    <maven.compiler.release>21</maven.compiler.release>
   </properties>
 
   <dependencyManagement>
@@ -93,15 +94,8 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.11.2</version>
-          <configuration>
-            <show>public</show>
-            <nohelp>true</nohelp>
-            <header>PersonalTax</header>
-            <footer>Authored by fuuzen</footer>
-            <doctitle>fyi.taf.PersonalTax Documentation</doctitle>
-          </configuration>
+          <artifactId>maven-jxr-plugin</artifactId>
+          <version>3.6.0</version>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -114,8 +108,41 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.11.2</version>
         <configuration>
-          <stylesheetfile>${basedir}/src/main/javadoc/stylesheet.css</stylesheetfile>
           <show>public</show>
+          <nohelp>true</nohelp>
+          <header>PersonalTax</header>
+          <doctitle>fyi.taf.PersonalTax Documentation</doctitle>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>3.5.2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>3.4.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.12</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>3.6.0</version>
+        <configuration>
+          <inputDir>${project.build.testSourceDirectory}</inputDir>
+          <outputDir>${project.reporting.outputDirectory}/test-xref</outputDir>
         </configuration>
       </plugin>
     </plugins>

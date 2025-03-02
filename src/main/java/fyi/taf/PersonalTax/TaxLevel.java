@@ -39,7 +39,7 @@ public class TaxLevel {
 
     /**
      * 设置起征点
-     * @param threshold
+     * @param threshold 新的起征点
      */
     public void setThreshold(double threshold) {
       this.threshold = threshold;
@@ -47,7 +47,7 @@ public class TaxLevel {
 
     /**
      * 设置税率
-     * @param rate
+     * @param rate 新的税率
      */
     public void setRate(double rate) {
       this.rate = rate;

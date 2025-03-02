@@ -13,7 +13,12 @@ import org.junit.jupiter.api.Test;
 public class CalculatorTest {
 
     /**
-     * 比较两个 ArrayList<Double> 在 0.01 误差范围内是否相等
+     * CalculatorTest constructor
+     */
+    public CalculatorTest() {}
+
+    /**
+     * 比较两个 ArrayList&lt;Double&gt; 在 0.01 误差范围内是否相等
      * @param a 实际结果
      * @param b 期望结果
      */
@@ -38,6 +43,9 @@ public class CalculatorTest {
         }
     }
 
+    /**
+     * 测试默认五个税级时的所有情况能否准确的计算
+     */
     @Test
     public void shouldCalculateCorrectly() {
         Calculator calculator = new Calculator();
@@ -67,6 +75,9 @@ public class CalculatorTest {
         );
     }
 
+    /**
+     * 测试默认五个税级被修改起征点和税率后能否准确的计算
+     */
     @Test
     public void shouldCalculateCorrectlyAfterAdjust() {
         Calculator calculator = new Calculator();

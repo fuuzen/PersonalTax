@@ -3,7 +3,7 @@ name: Build & Deploy Javadoc
 on:
   push:
     branches: [ main, master, ci-test ]
-    paths: ["src/main/java/fyi/taf/PersonalTax/**", ".github/workflows/doc.yml"]
+    paths: ["src/main/java/fyi/taf/PersonalTax/**", "src/test/java/fyi/taf/PersonalTax/**", ".github/workflows/doc.yml", "pom.xml"]
 
 jobs:
   build-and-deploy:
@@ -19,10 +19,10 @@ jobs:
           distribution: 'temurin'
 
       - name: Generate Javadoc
-        run: mvn javadoc:javadoc
+        run: mvn site
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: target/site/apidocs
+          publish_dir: target/site
