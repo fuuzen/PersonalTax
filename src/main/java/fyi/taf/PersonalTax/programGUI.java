@@ -5,6 +5,7 @@ import java.awt.image.BaseMultiResolutionImage;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -131,8 +132,9 @@ public class programGUI {
             }
         };
         model.addRow(new Object[]{"税级", "起征点", "税率", "您应缴税"});
-        for(int i = 0; i < 5; ++i) {
-            model.addRow(new Object[]{i + 1, calculator.taxThresholds[i], calculator.taxRates[i], 0});
+        for(int i = 0; i < calculator.getTaxLevelCount(); ++i) {
+            TaxLevel taxLevel = calculator.getTaxLevel(i);
+            model.addRow(new Object[]{i + 1, taxLevel.getThreshold(), taxLevel.getRate(), 0});
         }
         model.addRow(new Object[]{"总共", null, null, 0});
         JTable table = new JTable(model);
@@ -140,9 +142,9 @@ public class programGUI {
         panel.add(table);
 
         calButton.addActionListener(e -> {
-            double[] res = calculator.calculate(input.getNumber().doubleValue());
+            ArrayList<Double> res = calculator.calculate(input.getNumber().doubleValue());
             for(int i = 0; i < 6; ++i) {
-                model.setValueAt(String.format("%,.2f", res[i]), i + 1, 3);
+                model.setValueAt(String.format("%,.2f", res.get(i)), i + 1, 3);
             }
         });
 
