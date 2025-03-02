@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>programGUI xref</title>
+<link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../apidocs/fyi/taf/PersonalTax/programGUI.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> fyi.taf.PersonalTax;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> java.awt.Image;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> java.awt.image.BaseMultiResolutionImage;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> java.awt.image.BufferedImage;
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> java.io.IOException;
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> java.io.InputStream;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> java.util.ArrayList;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> javax.imageio.ImageIO;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> javax.swing.ImageIcon;
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> javax.swing.JButton;
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <strong class="jxr_keyword">import</strong> javax.swing.JFrame;
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">import</strong> javax.swing.JLabel;
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <strong class="jxr_keyword">import</strong> javax.swing.JOptionPane;
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">import</strong> javax.swing.JPanel;
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <strong class="jxr_keyword">import</strong> javax.swing.JSpinner;
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">import</strong> javax.swing.JTable;
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">import</strong> javax.swing.SpinnerNumberModel;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">import</strong> javax.swing.table.DefaultTableModel;
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_javadoccomment"> * GUI program</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_javadoccomment"> * @author fuuzen</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment"> * @version 1.0.0</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_javadoccomment"> * @since 2025-2-28</em>
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="programGUI" href="../../../fyi/taf/PersonalTax/programGUI.html#programGUI">programGUI</a> {
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment">     * GUI program constructor</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      <strong class="jxr_keyword">public</strong> <a name="programGUI" href="../../../fyi/taf/PersonalTax/programGUI.html#programGUI">programGUI</a>() {};
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment">     * GUI program main function</em>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment">     * @param args 参数无效,不需要</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>          <a name="Calculator" href="../../../fyi/taf/PersonalTax/Calculator.html#Calculator">Calculator</a> calculator = <strong class="jxr_keyword">new</strong> <a name="Calculator" href="../../../fyi/taf/PersonalTax/Calculator.html#Calculator">Calculator</a>();
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          JFrame frame = <strong class="jxr_keyword">new</strong> JFrame(<span class="jxr_string">"个人所得税计算器"</span>);
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          frame.setSize(650, 300);
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          JPanel panel = <strong class="jxr_keyword">new</strong> JPanel();    
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          frame.add(panel);
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          panel.setLayout(<strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>              String os = System.getProperty(<span class="jxr_string">"os.name"</span>).toLowerCase();
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>              Image icon;
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>              <strong class="jxr_keyword">if</strong> (os.contains(<span class="jxr_string">"win"</span>)) {
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>                  ImageIcon ico = <strong class="jxr_keyword">new</strong> ImageIcon(<span class="jxr_string">"images/icons/icon.ico"</span>);
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>                  icon = ico.getImage();
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>              } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (os.contains(<span class="jxr_string">"mac"</span>)) {
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>                  ImageIcon icns = <strong class="jxr_keyword">new</strong> ImageIcon(<span class="jxr_string">"images/icons/icon.icns"</span>);
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>                  icon = icns.getImage();
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>              } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>                  InputStream inputStream16 = programGUI.<strong class="jxr_keyword">class</strong>.getClassLoader().getResourceAsStream(<span class="jxr_string">"images/icons/icon16.png"</span>);
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>                  InputStream inputStream32 = programGUI.<strong class="jxr_keyword">class</strong>.getClassLoader().getResourceAsStream(<span class="jxr_string">"images/icons/icon32.png"</span>);
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>                  InputStream inputStream64 = programGUI.<strong class="jxr_keyword">class</strong>.getClassLoader().getResourceAsStream(<span class="jxr_string">"images/icons/icon64.png"</span>);
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>                  InputStream inputStream128 = programGUI.<strong class="jxr_keyword">class</strong>.getClassLoader().getResourceAsStream(<span class="jxr_string">"images/icons/icon128.png"</span>);
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>                  InputStream inputStream256 = programGUI.<strong class="jxr_keyword">class</strong>.getClassLoader().getResourceAsStream(<span class="jxr_string">"images/icons/icon256.png"</span>);
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>                  <strong class="jxr_keyword">if</strong> (inputStream16 == <strong class="jxr_keyword">null</strong> || inputStream32 == <strong class="jxr_keyword">null</strong> || inputStream64 == <strong class="jxr_keyword">null</strong> || inputStream128 == <strong class="jxr_keyword">null</strong> || inputStream256 == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>                      <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException(<span class="jxr_string">"Icon not found!"</span>);
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>                  }
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>                  BufferedImage icon16 = ImageIO.read(inputStream16);
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>                  BufferedImage icon32 = ImageIO.read(inputStream32);
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>                  BufferedImage icon64 = ImageIO.read(inputStream64);
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>                  BufferedImage icon128 = ImageIO.read(inputStream128);
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>                  BufferedImage icon256 = ImageIO.read(inputStream256);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>      
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>                  icon = <strong class="jxr_keyword">new</strong> BaseMultiResolutionImage(icon16, icon32, icon64, icon128, icon256);
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>              }
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>              frame.setIconImage(icon);
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>  
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>              InputStream inputStream = programGUI.<strong class="jxr_keyword">class</strong>.getClassLoader().getResourceAsStream(<span class="jxr_string">"images/taffy.png"</span>);
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>              <strong class="jxr_keyword">if</strong> (inputStream == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>                  <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException(<span class="jxr_string">"Image not found!"</span>);
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>              }
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>              JLabel taffy = <strong class="jxr_keyword">new</strong> JLabel(
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>                  <strong class="jxr_keyword">new</strong> ImageIcon(
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>                      ImageIO.read(inputStream).getScaledInstance(250, 250, Image.SCALE_SMOOTH)
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>                  )
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>              );
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>              taffy.setBounds(25, 5, 250, 250);
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>              panel.add(taffy);
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>          } <strong class="jxr_keyword">catch</strong> (IOException e) {
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>              e.printStackTrace();
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>              JOptionPane.showMessageDialog(frame, <span class="jxr_string">"Failed to load image!"</span>, <span class="jxr_string">"Error"</span>, JOptionPane.ERROR_MESSAGE);
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>          }
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>  
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>          JLabel inputLabel = <strong class="jxr_keyword">new</strong> JLabel(<span class="jxr_string">"您的收入: "</span>);
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>          inputLabel.setBounds(300, 20, 100, 25);
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>          inputLabel.setHorizontalAlignment(JLabel.RIGHT);
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>          panel.add(inputLabel);
+<a class="jxr_linenumber" name="L100" href="#L100">100</a> 
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>         SpinnerNumberModel input = <strong class="jxr_keyword">new</strong> SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1);
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>         JSpinner spinner = <strong class="jxr_keyword">new</strong> JSpinner(input);
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>         spinner.setBounds(400, 20, 150, 25);
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>         panel.add(spinner);
+<a class="jxr_linenumber" name="L105" href="#L105">105</a> 
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>         JButton calButton = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"计算"</span>);
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>         calButton.setBounds(400, 50, 100, 25);
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>         panel.add(calButton);
+<a class="jxr_linenumber" name="L109" href="#L109">109</a> 
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>         JLabel texLabelText = <strong class="jxr_keyword">new</strong> JLabel(<span class="jxr_string">"您的个人所得税为: "</span>);
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>         texLabelText.setBounds(350, 80, 200, 25);
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>         texLabelText.setHorizontalAlignment(JLabel.CENTER);
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>         panel.add(texLabelText);
+<a class="jxr_linenumber" name="L114" href="#L114">114</a> 
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>         String[] columnNames = {<span class="jxr_string">"税级"</span>, <span class="jxr_string">"起征点"</span>, <span class="jxr_string">"税率"</span>, <span class="jxr_string">"您应缴税"</span>};
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>         DefaultTableModel model = <strong class="jxr_keyword">new</strong> DefaultTableModel(columnNames, 0) {
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>             @Override
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>             <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isCellEditable(<strong class="jxr_keyword">int</strong> row, <strong class="jxr_keyword">int</strong> column) {
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>                 <em class="jxr_comment">// 不可编辑</em>
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>                 <strong class="jxr_keyword">return</strong> column != 0 &amp;&amp; column != 3 &amp;&amp; row != 0 &amp;&amp; row != 6;
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>             }
+<a class="jxr_linenumber" name="L122" href="#L122">122</a> 
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>             @Override
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>             <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setValueAt(Object value, <strong class="jxr_keyword">int</strong> row, <strong class="jxr_keyword">int</strong> column) {
+<a class="jxr_linenumber" name="L125" href="#L125">125</a>                 <strong class="jxr_keyword">super</strong>.setValueAt(value, row, column);
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>                 <strong class="jxr_keyword">if</strong> (column == 1) { <em class="jxr_comment">// 修改起征点</em>
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>                     calculator.adjustTaxThreshold(row - 1, Double.parseDouble(value.toString()));
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>                 }
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>                 <strong class="jxr_keyword">if</strong> (column == 2) { <em class="jxr_comment">// 修改税率</em>
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>                     calculator.adjustTaxRate(row - 1, Double.parseDouble(value.toString()));
+<a class="jxr_linenumber" name="L131" href="#L131">131</a>                 }
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>             }
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>         };
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>         model.addRow(<strong class="jxr_keyword">new</strong> Object[]{<span class="jxr_string">"税级"</span>, <span class="jxr_string">"起征点"</span>, <span class="jxr_string">"税率"</span>, <span class="jxr_string">"您应缴税"</span>});
+<a class="jxr_linenumber" name="L135" href="#L135">135</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 0; i &lt; calculator.getTaxLevelCount(); ++i) {
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>             <a name="TaxLevel" href="../../../fyi/taf/PersonalTax/TaxLevel.html#TaxLevel">TaxLevel</a> taxLevel = calculator.getTaxLevel(i);
+<a class="jxr_linenumber" name="L137" href="#L137">137</a>             model.addRow(<strong class="jxr_keyword">new</strong> Object[]{i + 1, taxLevel.getThreshold(), taxLevel.getRate(), 0});
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>         }
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>         model.addRow(<strong class="jxr_keyword">new</strong> Object[]{<span class="jxr_string">"总共"</span>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, 0});
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>         JTable table = <strong class="jxr_keyword">new</strong> JTable(model);
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>         table.setBounds(300, 120, 300, 120);
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>         panel.add(table);
+<a class="jxr_linenumber" name="L143" href="#L143">143</a> 
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>         calButton.addActionListener(e -&gt; {
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>             ArrayList&lt;Double&gt; res = calculator.calculate(input.getNumber().doubleValue());
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>             <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 0; i &lt; 6; ++i) {
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>                 model.setValueAt(String.format(<span class="jxr_string">"%,.2f"</span>, res.get(i)), i + 1, 3);
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>             }
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>         });
+<a class="jxr_linenumber" name="L150" href="#L150">150</a> 
+<a class="jxr_linenumber" name="L151" href="#L151">151</a>         frame.setVisible(<strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>     }
+<a class="jxr_linenumber" name="L153" href="#L153">153</a> }
+</pre>
+<hr/>
+<div id="footer">© 2025</div>
+</body>
+</html>
